@@ -9,8 +9,7 @@
 
         public Pizza() { }
 
-        public Pizza(int id, string title, string description, string image, string price) {
-            Id = id;
+        public Pizza(string title, string description, string image, string price) {
             Title = title;
             Description = description;
             Image = image;
