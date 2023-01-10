@@ -33,8 +33,8 @@
                         <p class="card-text"><strong>Price:</strong> €@Model.Price</p>
                         <div class="text-center">
                             <a class="btn btn-primary col-3" href="@Url.Action("Index", "Pizza" )" role="button">Home</a>
-                            <button type="button" class="btn btn-warning col-3">Modifica</button>
-                            <button type="button" class="btn btn-danger col-3">Elimina</button>
+                            <a class="btn btn-warning col-3" href="@Url.Action("ModificaPizza", "Pizza", new { id = Model.Id })" role="button">Modifica</a>
+                            <a class="btn btn-danger col-3" href="@Url.Action("EliminaPizza", "Pizza", new { id = Model.Id })" role="button">Elimina</a>
                         </div>
                     </div>
                 </div>

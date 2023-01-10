@@ -26,10 +26,10 @@
         <a class="btn btn-primary" href="@Url.Action("NuovaPizza","Pizza")">Aggiungi Pizza</a>
 
     </div>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-5">
         <div class="row">
             @foreach (Pizza pizza in Model) {
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-4 mb-3">
                     <div class="card">
                         <img src="@pizza.Image" class="card-img-top" alt="@pizza.Title">
                         <div class="card-body">
