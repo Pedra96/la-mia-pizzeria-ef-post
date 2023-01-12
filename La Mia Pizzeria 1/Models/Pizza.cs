@@ -18,6 +18,8 @@ namespace La_Mia_Pizzeria_1.Models {
         public string Image { get; set; }
 
         [Required(ErrorMessage = "Questo campo è obbligatorio")]
+        [PriceValidation]
+        [StringLength(100)]
         public string Price { get; set; }
 
 
