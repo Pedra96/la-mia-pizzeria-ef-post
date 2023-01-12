@@ -30,6 +30,7 @@ namespace La_Mia_Pizzeria_1.Controllers {
         public IActionResult NuovaPizza() {
             return View("NuovaPizza");
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult NuovaPizza(Pizza formdata) {
@@ -45,10 +46,7 @@ namespace La_Mia_Pizzeria_1.Controllers {
         [HttpGet]
         public IActionResult ModificaPizza(int id) {
             using PizzeriaContext db = new PizzeriaContext();
-                Pizza? pizza =
-                    (from piz in db.Pizze
-                     where piz.Id == id
-                     select piz).FirstOrDefault();
+            Pizza? pizza = db.Pizze.Where(x => x.Id == id).FirstOrDefault();
                 if (pizza == null) {
                     return NotFound("Pizza non presente");
                 } else {
@@ -57,6 +55,7 @@ namespace La_Mia_Pizzeria_1.Controllers {
         
 
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ModificaPizza(Pizza formdata) {
@@ -64,9 +63,7 @@ namespace La_Mia_Pizzeria_1.Controllers {
                 return View("ModificaPizza", formdata);
             }
             using PizzeriaContext db = new PizzeriaContext();
-            Pizza? ModificaPizza = (from piz in db.Pizze
-                                    where piz.Id == formdata.Id
-                                    select piz).FirstOrDefault();
+            Pizza? ModificaPizza = db.Pizze.Where(x => x.Id == formdata.Id).FirstOrDefault();
             if (ModificaPizza != null) {
                 ModificaPizza.Title = formdata.Title;
                 ModificaPizza.Price = formdata.Price;
@@ -79,10 +76,8 @@ namespace La_Mia_Pizzeria_1.Controllers {
         
         public IActionResult EliminaPizza(int id) {
             using PizzeriaContext db = new PizzeriaContext();
-            Pizza? EliminaPizza = (from piz in db.Pizze
-                                    where piz.Id == id
-                                    select piz).FirstOrDefault();
-            if(EliminaPizza != null) {
+            Pizza? EliminaPizza = db.Pizze.Where(x => x.Id == id).FirstOrDefault();
+            if (EliminaPizza != null) {
                 db.Remove(EliminaPizza);
                 db.SaveChanges();
             }
